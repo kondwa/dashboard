@@ -26,25 +26,23 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() => pages[nav.currentPage.value]),
-      bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            currentIndex: nav.currentPage.value,
-            onTap: (index) {
-              setState(() {
-                nav.currentPage.value = index;
-              });
-            },
-            items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.dashboard), label: "Dashboard"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.calendar_month), label: "Leave"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.travel_explore), label: "Travel"),
-              BottomNavigationBarItem(icon: Icon(Icons.money), label: "Loans")
-            ]),
-      ),
+      bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: nav.getCurrentPage(),
+          onTap: (index) {
+            setState(() {
+              nav.setCurrentPage(index);
+            });
+          },
+          items: const [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.dashboard), label: "Dashboard"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.calendar_month), label: "Leave"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.travel_explore), label: "Travel"),
+            BottomNavigationBarItem(icon: Icon(Icons.money), label: "Loans")
+          ]),
     );
   }
 }
